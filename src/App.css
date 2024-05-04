@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.slick-slide > div {
+  margin: 0 10px;
+}
+
 .text {
     font-size: xxx-large;
     margin-top: 6rem;

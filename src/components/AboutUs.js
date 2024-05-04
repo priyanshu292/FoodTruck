@@ -3,7 +3,7 @@ import aboutimg from "../assets/aboutimg.jfif";
 
 const AboutUs = () => {
   return (
-    <div className='mt-96 mb-96 bg-gray-100 flex'>
+    <div className='mt-96 bg-gray-100 flex'>
       <div>
         <img className='w-[384px] h-[468px] ml-60' src={aboutimg} alt='about' />
       </div>
