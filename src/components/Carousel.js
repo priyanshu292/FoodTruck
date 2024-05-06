@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
 
-  const settings = {
+  const settingsHorizontal = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -18,7 +18,26 @@ const Carousel = () => {
       <div style={{ textAlign: 'center' }}>
         <ul style={{ margin: '0' }}> {dots} </ul>
         <p>
-          {Math.floor(currentSlide / settings.slidesToScroll) + 1}/{Math.ceil(data.length / settings.slidesToScroll)}
+          {Math.floor(currentSlide / settingsHorizontal.slidesToScroll) + 1}/{Math.ceil(data.length / settingsHorizontal.slidesToScroll)}
+        </p>
+      </div>
+    ),
+  };
+
+  const settingsVertical = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    vertical: true,
+    verticalSwiping: true,
+    afterChange: (current) => setCurrentSlide(current),
+    appendDots: (dots) => (
+      <div style={{ textAlign: 'center' }}>
+        <ul style={{ margin: '0' }}> {dots} </ul>
+        <p>
+          {currentSlide + 1}/{data.length}
         </p>
       </div>
     ),
@@ -26,10 +45,10 @@ const Carousel = () => {
 
   return (
     <div>
-      <h1 className='mt-32 text-5xl text-blue-950 ml-52'>Latest Articles</h1>
+      <h1 className='mt-32 text-5xl text-blue-950 ml-14 md:ml-52'>Latest Articles</h1>
       <div className='w-3/4 m-auto'>
         <div className='mt-20'>
-          <Slider {...settings}>
+          <Slider {...(window.innerWidth < 768 ? settingsVertical : settingsHorizontal)}>
             {data.map((d) => (
               <div
                 key={d.name} 
