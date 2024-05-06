@@ -28,8 +28,8 @@ const Carousel = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     vertical: true,
     verticalSwiping: true,
     afterChange: (current) => setCurrentSlide(current),
@@ -37,7 +37,7 @@ const Carousel = () => {
       <div style={{ textAlign: 'center' }}>
         <ul style={{ margin: '0' }}> {dots} </ul>
         <p>
-          {currentSlide + 1}/{data.length}
+        {Math.floor(currentSlide / settingsHorizontal.slidesToScroll) + 1}/{Math.ceil(data.length / settingsHorizontal.slidesToScroll)}
         </p>
       </div>
     ),
@@ -58,9 +58,9 @@ const Carousel = () => {
                   <img src={d.img} alt='' className='w-[326px] h-[257px] rounded-lg' />
                 </div>
                 <div className='w-[295.02px] h-[194.52px] m-auto mt-4'>
-                  <h1 className='text-2xl font-bold text-blue-900'>{d.name}</h1>
+                  <h1 className='text-lg text-center md:text-start md:text-2xl font-bold text-blue-950'>{d.name}</h1>
                   <p className='pt-4 text-gray-800'>{d.review}</p>
-                  <button className='rounded-full border border-gray-700 p-3 mt-4'>Read More</button>
+                  <button className='ml-24 md:ml-0 rounded-full border border-gray-700 p-3 mt-4'>Read More</button>
                 </div>
               </div>
             ))}
